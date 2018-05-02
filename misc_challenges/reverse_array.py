@@ -12,3 +12,8 @@ def reverse_array(lst):
     return lst
 
 print reverse_array([1, 2, 3, 4])
+
+# The runtime for this algorithm is O(n) becuase we 
+# Have to iterate through the length of the list
+# The fact that it only goes through half of the array
+# In terms of iterations does not impact the big O time
