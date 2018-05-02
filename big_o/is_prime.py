@@ -13,11 +13,15 @@ def is_prime(num):
         return False
 
     for i in range(2, int(sqrt(num)) + 1):
-        print int(sqrt(num)) + 1
         if num % i == 0:
             return False
 
     return True
+
+    # This runs on O(sqrt(n)) time becuase the work inside of the for
+    # loop is constant
+    # we just need to know how many iterations the for loop goes
+    # through in worst case-- which is from 2 to the squareroot of n
 
 
 print is_prime(1)
