@@ -8,3 +8,7 @@ def power(a, b):
 
 
 print power(3, 2)
+
+# The runtime for this algorithm is O(b)
+# The recurisve code iterates through b calls, sincewe subtract 1 from each
+# level
