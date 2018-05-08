@@ -23,36 +23,34 @@
 #     if doctest.testmod().failed == 0:
 #         print "All doctests passed!! Wooo"
 
-import unittest
 
-def urlify(string, length):
-    """function replaces single spaces with %20 and removes trailing spaces"""
-    new_index = len(string)
+def urlify(s, true_length):
+    """Replaces all of the spaces in a string with %20
 
-    for i in reversed(range(length)):
-        if string[i] == ' ':
-            # Replace spaces
-            string[new_index - 3:new_index] = '%20'
-            new_index -= 3
-        else:
-            # Move characters
-            string[new_index - 1] = string[i]
-            new_index -= 1
+    >>> urlify('hi my name is', 13)
+    hi%20my%20name%20is
 
-    return string
+    >>> urlify('hi my name is     ', 13)
+    hi%20my%20name%20is
 
-class Test(unittest.TestCase):
-    '''Test Cases'''
-    # Using lists because Python strings are immutable
-    data = [
-        (list('much ado about nothing      '), 22,
-         list('much%20ado%20about%20nothing')),
-        (list('Mr John Smith    '), 13, list('Mr%20John%20Smith'))]
+    """
 
-    def test_urlify(self):
-        for [test_string, length, expected] in self.data:
-            actual = urlify(test_string, length)
-            self.assertEqual(actual, expected)
+
+    string_list = list(s)
+
+    for i in reversed(range(true_length)):
+        if string_list[i] == " ":
+            string_list[i] = "%20"
+
+    print "".join(string_list)
+
+
+urlify('hi my name is', 13)
+
+
 
 if __name__ == "__main__":
-    unittest.main()
+    import doctest
+    if doctest.testmod().failed == 0:
+        print "All doctests passed!! Wooo"
+
