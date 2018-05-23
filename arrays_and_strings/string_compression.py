@@ -3,14 +3,22 @@ def string_compression(str1):
     >>> string_compression("abcdefg")
     'abcdefg'
 
-    >>> string_compression("aabbbcdddeefg")
-    'a2b3c1d3e2f1g1'
+    >>> string_compression("aabcccccaaa")
+    'a2b1c5a3'
+
+    >>> string_compression("aaabbccccccaaabb")
+    'a3b2c6a3b2'
+
+    >>> string_compression("aabbccdd")
+    'aabbccdd'
+
+    >>> string_compression("")
+    ''
+
     """
 
-    str1_chars = set(str1)
-    if len(str1) == len(str1_chars):
+    if str1 == "":
         return str1
-
 
     current = str1[0]
     count = 0
@@ -34,10 +42,13 @@ def string_compression(str1):
     compressed.append(current)
     compressed.append(str(count))
 
-    return "".join(compressed)
+    # print compressed
 
+    if len(compressed) < len(str1):
+        return "".join(compressed)
+    else:
+        return str1
 
-# print string_compression("aabbbcdddeefg")
 
 
 if __name__ == "__main__":
