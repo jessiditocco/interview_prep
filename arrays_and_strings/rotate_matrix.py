@@ -50,7 +50,7 @@ def rotate_matrix(matrix):
             #move bottom right to bottom left
             matrix[-i - 1][layer] = matrix[-layer - 1][-i - 1]
 
-            # move the top right to bottom left
+            # move the top right to bottom right
             matrix[-layer - 1][-i -1] = matrix[i][-layer - 1]
 
             # replace the top right
