@@ -41,6 +41,7 @@ def nullify_column(matrix, column):
 
 
 
+
 class Test(unittest.TestCase):
     '''Test Cases'''
     data = [
