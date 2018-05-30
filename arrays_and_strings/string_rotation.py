@@ -12,11 +12,11 @@ def is_rotation(s1, s2):
 
 def is_a_substring(concatenated_string, sub):
 
-    if concatenated_string.find(sub) == -1:
-        return False
+    if concatenated_string.find(sub) != -1:
+        return True
 
     else:
-        return True
+        return False
 
 
 class Test(unittest.TestCase):
