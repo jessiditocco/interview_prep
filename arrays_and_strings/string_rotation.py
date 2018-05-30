@@ -10,13 +10,36 @@ def is_rotation(s1, s2):
     else:
         return False
 
-def is_a_substring(concatenated_string, sub):
+# def is_a_substring(concatenated_string, sub):
 
-    if concatenated_string.find(sub) != -1:
-        return True
+#     if concatenated_string.find(sub) != -1:
+#         return True
 
-    else:
-        return False
+#     else:
+#         return False
+
+# loop through the concatenated string
+# for each item in the concatenated string
+# we will loop through the second string and check that the items in the
+# second string equal the first string; if it does, keep looping
+
+
+def is_a_substring(s1, s2):
+    """Without using built in find method"""
+
+    for i in range(len(s1) - len(s2) + 1):
+        is_substring_here = True
+
+        for j in range(len(s2)):
+            if s1[i + j] != s2[j]:
+                is_substring_here = False
+                break
+
+        if is_substring_here:
+            return True
+
+    return False
+
 
 
 class Test(unittest.TestCase):
