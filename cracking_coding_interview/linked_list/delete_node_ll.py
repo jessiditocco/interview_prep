@@ -24,19 +24,34 @@ class LinkedList(object):
         return "<head = {}, tail = {}>".format(self.head, self.tail)
 
 
-    def delete_node(self, node):
+    def delete_node(self, value):
+
+        # if your removing the head, we need to 
+        # point the second item to the new head
+
+        if self.head.data == value:
+            self.head = self.head.next
+
+
+        # removing something other than the head
+        # current is equal to the head
 
         current = self.head
 
+        # while the current's next is not none
+        # check if current's next's data is equal to the value
+        # if it is, set current's next equal to its next next
         while current.next is not None:
-            # if we are deleting the first node
-            if current.data == node.data and current == self.head:
-                self.head == current.next
-
-            # if we are deleting the last node
-            elif current.data.next == node.data:
+            if current.next.data == value:
                 current.next = current.next.next
 
-            current = current.next
+                # if you're removing the last item and the current.next is None
+                # update the tail
 
-        # deleting the last node-- we must update the tail
+                if current.next is None:
+                    self.tail = current
+                return
+            # havent found the value yet, keep traversing
+            else:
+                current = current.next
+
