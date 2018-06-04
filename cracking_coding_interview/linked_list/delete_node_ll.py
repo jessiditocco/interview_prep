@@ -3,7 +3,7 @@ class Node(object):
 
     def __init__(self, data, next=None):
         self.data = data
-        self.next = None
+        self.next = next
 
     def __repr__(self):
         """Helpful representation of node object"""
@@ -31,6 +31,11 @@ class LinkedList(object):
 
         if self.head.data == value:
             self.head = self.head.next
+
+            # now if the head is None, (the list is empty now)
+            if self.head is None:
+                self.tail = None 
+            return
 
 
         # removing something other than the head

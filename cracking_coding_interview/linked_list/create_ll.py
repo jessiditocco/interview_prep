@@ -19,7 +19,7 @@ class LinkedList(object):
         self.tail = tail
 
     def __repr__(self):
-        """Helpful representation of node object"""
+        """Helpful representation of Linked list object"""
 
         return "<head = {}, tail = {}>".format(self.head, self.tail)
 
