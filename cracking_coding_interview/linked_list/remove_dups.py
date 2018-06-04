@@ -22,6 +22,8 @@ class LinkedList(object):
 
 
     def remove_dups(self):
+        """removes duplicates from a list with linear runtime"""
+
         # import pdb; pdb.set_trace()
 
         if ll.head is None:
@@ -43,6 +45,23 @@ class LinkedList(object):
             else:
                 current = current.next
 
+    def remove_dups_constant_space(self):
+        """Removes duplicates from a list with constant space but exponential runtime"""
+
+        current = self.head
+
+        while current is not None:
+            runner = current
+
+            while runner.next is not None:
+                if runner.next.data == current.data:
+                    runner.next = runner.next.next
+                else:
+                    runner = runner.next
+
+            current = current.next
+
+
 
 if __name__ == "__main__":
     n1 = Node("apple")
@@ -53,6 +72,7 @@ if __name__ == "__main__":
     n6 = Node("apple")
     n7 = Node("berry")
     n8 = Node("durian")
+    n9 = Node("durian")
     n1.next = n2
     n2.next = n3
     n3.next = n4
@@ -60,7 +80,8 @@ if __name__ == "__main__":
     n5.next = n6
     n6.next = n7
     n7.next = n8
+    n8.next = n9
 
-    ll = LinkedList(n1, n8)
+    ll = LinkedList(n1, n9)
 
     # ll.remove_dups()
