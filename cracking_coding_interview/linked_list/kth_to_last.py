@@ -31,7 +31,17 @@ class LinkedList(object):
 
         return current
 
-    def kth_to_last_recursive(self, current, k):
+    # def kth_to_last_recursive(self, current, k):
+    #     import pdb; pdb.set_trace();
+    #     if current.next == None:
+    #         return 0
+
+    #     i = self.kth_to_last_recursive(current.next, k) + 1
+        
+    #     if i == k:
+    #         print current.data
+        
+    #     return i
         
 
 
