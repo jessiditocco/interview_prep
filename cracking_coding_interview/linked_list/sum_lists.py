@@ -24,50 +24,87 @@ class LinkedList(object):
 
             current = current.next
 
+    def add(self, data):
+        new_node = Node(data)
+        current = self.head
 
-def sum_linked_lists(num1, num2):
-
-        
-    num1_digits = []
-    num2_digits = []
-    sum_nums = LinkedList()
-
-    current = num1.head
-
-    while current:
-        num1_digits.append(current.data)
-
-        current = current.next
-
-    current = num2.head
-
-    while current:
-        num2_digits.append(current.data)
-
-        current = current.next
-
-    num1_digits.reverse()
-    num2_digits.reverse()
-
-    num_1 = int("".join(map(str, num1_digits)))
-    num_2 = int("".join(map(str, num2_digits)))
-
-
-    str_sum_nums = str(num_1 + num_2) 
-
-
-    for digit in str_sum_nums:
-        new_node = Node(digit)
-
-        if sum_nums.head is None:
-            sum_nums.head = new_node
-            sum_nums.tail = new_node
+        if not current:
+            self.head = new_node
+            self.tail = new_node
 
         else:
-            sum_nums.tail.next = new_node
-            sum_nums.tail = new_node
+            self.tail.next = new_node
+            self.tail = new_node
 
-    return sum_nums.print_ll()
+# def sum_linked_lists(num1, num2):
+
+        
+#     num1_digits = []
+#     num2_digits = []
+#     sum_nums = LinkedList()
+
+#     current = num1.head
+
+#     while current:
+#         num1_digits.append(current.data)
+
+#         current = current.next
+
+#     current = num2.head
+
+#     while current:
+#         num2_digits.append(current.data)
+
+#         current = current.next
+
+#     num1_digits.reverse()
+#     num2_digits.reverse()
+
+#     num_1 = int("".join(map(str, num1_digits)))
+#     num_2 = int("".join(map(str, num2_digits)))
+
+
+#     str_sum_nums = reversed(str(num_1 + num_2))
+
+
+#     for digit in str_sum_nums:
+#         new_node = Node(digit)
+
+#         if sum_nums.head is None:
+#             sum_nums.head = new_node
+#             sum_nums.tail = new_node
+
+#         else:
+#             sum_nums.tail.next = new_node
+#             sum_nums.tail = new_node
+
+#     return sum_nums.print_ll()
+
+def sum_lists(ll_a, ll_b):
+    n1, n2 = ll_a.head, ll_b.head
+
+    ll = LinkedList()
+    carry = 0
+
+    while n1 or n2:
+        result = carry
+
+        if n1:
+            result += n1.data
+            n1 = n1.next
+
+        if n2:
+            result += n2.data
+            n2 = n2.next
+
+        ll.add(result % 10)
+        carry = result // 10
+
+    if carry:
+        ll.add(carry)
+
+    return ll.print_ll()
+
 
 
 if __name__ == '__main__':
