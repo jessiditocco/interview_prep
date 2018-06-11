@@ -36,6 +36,16 @@ class LinkedList(object):
             self.tail.next = new_node
             self.tail = new_node
 
+    def pad_ll_with_zero(self):
+        """Pads the front of a linked list with zero"""
+
+        new_node = Node(0, self.head)
+
+        self.head = new_node
+
+        return self.print_ll()
+
+
 # def sum_linked_lists(num1, num2):
 
         
@@ -80,49 +90,109 @@ class LinkedList(object):
 
 #     return sum_nums.print_ll()
 
-def sum_lists(ll_a, ll_b):
+# def sum_lists(ll_a, ll_b):
+#     n1, n2 = ll_a.head, ll_b.head
+
+#     ll = LinkedList()
+#     carry = 0
+
+#     while n1 or n2:
+#         result = carry
+
+#         if n1:
+#             result += n1.data
+#             n1 = n1.next
+
+#         if n2:
+#             result += n2.data
+#             n2 = n2.next
+
+#         ll.add(result % 10)
+#         carry = result // 10
+
+#     if carry:
+#         ll.add(carry)
+
+#     return ll.print_ll()
+
+
+def sum_lists_followup(ll_a, ll_b):
+    """Sum two linked lists assuming the digits are stored in forward order."""
+
+    # find the count of both linked lists
+
     n1, n2 = ll_a.head, ll_b.head
 
-    ll = LinkedList()
-    carry = 0
+    count_ll_a = 0
+    count_ll_b = 0
+
+    result = 0
+    new_sum = LinkedList()
+
+    while n1 is not None:
+        count_ll_a += 1
+        n1 = n1.next
+    n1 = ll_a.head
+
+    while n2 is not None:
+        count_ll_b += 1
+        n2 = n2.next
+    n2 = ll_b.head
+
+
+    # pad the linked lists with zeros at the beggining if they are not equal lengths
+
+    if count_ll_a > count_ll_b:
+        for i in range(count_ll_a - count_ll_b):
+            ll_b.pad_ll_with_zero()
+    
+    elif count_ll_b > count_ll_a:
+        for i in range(count_ll_b - count_ll_a):
+            ll_a.pad_ll_with_zero()
+
+    # sum the linked lists 
 
     while n1 or n2:
-        result = carry
+        result = (result * 10) + n1.data + n2.data
+        n1 = n1.next
+        n2 = n2.next
 
-        if n1:
-            result += n1.data
-            n1 = n1.next
+    # create a new linked list with the sum
 
-        if n2:
-            result += n2.data
-            n2 = n2.next
+    for num in str(result):
+        new_node = Node(int(num))
 
-        ll.add(result % 10)
-        carry = result // 10
+        if new_sum.head is None:
+            new_sum.head = new_node
+            new_sum.tail = new_node
 
-    if carry:
-        ll.add(carry)
+        else:
+            new_sum.tail.next = new_node
+            new_sum.tail = new_node
 
-    return ll.print_ll()
+
+    return new_sum.print_ll()
+
 
 
 
 if __name__ == '__main__':
-    n1 = Node(7)
+    n1 = Node(6)
     n2 = Node(1)
-    n3 = Node(6)
+    n3 = Node(7)
 
-    n4 = Node(5)
-    n5 = Node(9)
-    n6 = Node(2)
+    n8= Node(2)
+    n9 = Node(9)
+    n10 = Node(5)
 
     n1.next = n2
     n2.next = n3
  
+    n8.next = n9
+    n9.next = n10
 
-    n4.next = n5
-    n5.next = n6
+    ll_a1 = LinkedList(n1)
+    ll_b1 = LinkedList(n8)
 
-    linked_list1 = LinkedList(n1)
-    linked_list2 = LinkedList(n4)
+    sum_lists_followup(ll_a1, ll_b1)
 
