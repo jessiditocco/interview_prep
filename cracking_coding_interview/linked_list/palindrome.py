@@ -65,7 +65,26 @@ def is_palindrome(ll):
     return True
 
 # def is_palindrome_optimized(ll):
-    
+
+#     # we only need to loop through the first half of the linked list
+#     # to compare the the reversed linked list copy
+
+#     reversed_copy = copy_and_reverse_ll(ll.head)
+
+#     # loop through the original linked list and check that all of the letters are equal
+
+#     current = ll.head
+
+#     while current:
+#         if current.data != reversed_copy.data:
+#             return False
+
+#         current = current.next
+#         reversed_copy = reversed_copy.next
+
+#     return True
+
+
 
 
 
