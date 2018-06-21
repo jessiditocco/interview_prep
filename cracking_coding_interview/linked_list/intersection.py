@@ -43,8 +43,8 @@ def move_pointer(ll, num_spots):
 
 
 def find_intersection(ll1, ll2):
-    pointer_1 = None
-    pointer_2 = None
+    pointer_1 = ll1.head
+    pointer_2 = ll2.head
 
     if ll1.tail != ll2.tail:
         return "No Intersection"
@@ -52,20 +52,14 @@ def find_intersection(ll1, ll2):
     if ll1.length() > ll2.length():
         num_spots = ll1.length() - ll2.length()
         pointer_1 = move_pointer(ll1, num_spots)
-        pointer_2 = ll2.head
     elif ll2.length > ll1.length():
         print "ll2 longer"
         num_spots = ll2.length() - ll1.length()
         pointer_2 = move_pointer(ll2, num_spots)
-        pointer_1 = ll1.head
     # else, Length of linked lists are equal
-    else:
-        pointer_1 = ll1.head
-        pointer_2 = ll2.head
-
     # import pdb; pdb.set_trace();
 
-    while pointer_1 is not None:
+    while pointer_1 and pointer_2:
         if pointer_1 != pointer_2:
             pointer_1 = pointer_1.next
             pointer_2 = pointer_2.next
