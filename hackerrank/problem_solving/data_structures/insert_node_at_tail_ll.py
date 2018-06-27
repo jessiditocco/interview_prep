@@ -25,14 +25,14 @@ def print_singly_linked_list(node, sep, fptr):
 
 
 def insertNodeAtTail(head, data):
-    new_node = SinglyLinkedListNode(data)
+#     new_node = SinglyLinkedListNode(data)
 
-    if head is None:
-        head = new_node
-    else:
-        head.next = new_node
+#     if head is None:
+#         head = new_node
+#     else:
+#         head.next = new_node
 
-    return head
+#     return head
 
 
 
@@ -43,5 +43,5 @@ if __name__ == "__main__":
 
     for i in xrange(llist_count):
         llist_item = int(raw_input())
-        llist_head = insertNodeAtTail(llist.head, llist_item)
-        llist.head = llist_head
+        # llist_head = insertNodeAtTail(llist.head, llist_item)
+        # llist.head = llist_head
