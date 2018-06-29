@@ -22,7 +22,7 @@ def insertNodeAtTail(head, data):
 
     else:
         current = head
-        while current.next is not None:
+        while current.next:
             current = current.next
 
         current.next = new_node
